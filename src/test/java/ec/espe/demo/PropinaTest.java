@@ -1,16 +1,30 @@
 package ec.espe.demo;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PropinaTest {
 
-  @Test
+@Test
   void totalConPropina_calculaPropinaNormal() {
-    double obtenido = Propina.totalConPropina(100.0, 10.0);
-    assertEquals(110.0, obtenido, 0.000001);
+    //arrange
+    double subtotal = 100.0;
+    double porcentajePropina = 10.0;
+    double esperado = 110.0;
+
+    //act
+    double obtenido = Propina.totalConPropina(subtotal, porcentajePropina);
+
+    //assert
+    assertEquals(esperado, obtenido, 0.000001);
   }
 
+  //caso sin propina
+
+  //propina la 100%
+
+  //totalprpoina, con subtotal negativa 
   @Test
   void totalConPropina_subtotalNegativo_lanzaExcepcion() {
     assertThrows(IllegalArgumentException.class,
